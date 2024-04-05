@@ -9,7 +9,7 @@ RSpec.describe 'Search', type: :feature do
       click_on 'Search For Members'
 
       expect(current_path).to eq search_path
-      expect(page).to have_content('Total members of the Water Tribe: 20')
+      expect(page).to have_content('Total residents of the Water Tribe: 20')
       expect(page).to have_content('Notable Members:')
 
       expect(page).to have_css('li', count: 20)
