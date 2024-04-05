@@ -1,0 +1,20 @@
+<h1>Search Results</h1>
+
+<h2>Total members of the <%= params[:nation].gsub('+', ' ').titleize %>: <%= @total_members %></h2>
+
+<h2>Notable Members:</h2>
+<ul>
+  <% @members.first(25).each do |member| %>
+    <li>
+      <h3><%= member['name'] %></h3>
+      <% if member['photoUrl'].present? %>
+        <%= image_tag member['photoUrl'], alt: member['name'] %>
+      <% else %>
+        <p>No photo available</p>
+      <% end %>
+
+      <p>Allies: <%= member['allies'].present? ? member['allies'].join(', ') : 'None' %></p>
+      <p>Enemies: <%= member['enemies'].present? ? member['enemies'].join(', ') : 'None' %></p>
+      <p>Affiliations: <%= member['affiliation'] %></p>
+    </li>
+  <% end %>
